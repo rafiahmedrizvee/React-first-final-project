@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <div>
       <div className="navbar shadow-sm px-5">
-        <div className="navbar-start">
+        <div className="navbar-start justify-between md:justify-start w-[65%] md:w-[50%]">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -59,8 +59,8 @@ const Header = () => {
          {menuItems}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end w-[35%] md:w-[50%] ">
+          <a className="btn">Log in</a>
         </div>
       </div>
     </div>
