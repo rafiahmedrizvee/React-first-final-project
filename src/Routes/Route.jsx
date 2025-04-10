@@ -4,6 +4,7 @@ import About from "../Pages/About/About";
 import Main from "../Layout/Main";
 import Contact from "../Pages/Contact/Contact";
 import Appointment from "../Pages/Appointment/Appointment";
+import NotFound from "../Pages/Shared/NotFound/NotFound";
 
 const router = createBrowserRouter ([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter ([
             },
         ],
     },
+    {
+        path:'*',
+        element:<NotFound></NotFound>
+    }
 ]);
 
 export default router;
