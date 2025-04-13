@@ -5,6 +5,7 @@ import Main from "../Layout/Main";
 import Contact from "../Pages/Contact/Contact";
 import Appointment from "../Pages/Appointment/Appointment";
 import NotFound from "../Pages/Shared/NotFound/NotFound";
+import Services from "../Pages/Home/Services/Services";
 
 const router = createBrowserRouter ([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter ([
             {
                 path:'/contact',
                 element: <Contact></Contact>
+            },
+            {
+                path:'/service',
+                element: <Services></Services>
             },
         ],
     },
