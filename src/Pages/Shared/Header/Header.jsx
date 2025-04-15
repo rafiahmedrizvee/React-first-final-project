@@ -9,7 +9,7 @@ const Header = () => {
         <Link to= '/' >Home</Link>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <NavLink to= '/appointment' >Appointment</NavLink>
+        <NavLink to= '/appointment' >Visa </NavLink>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
         <Link to= '/about' >About</Link>
