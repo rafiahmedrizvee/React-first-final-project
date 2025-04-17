@@ -3,9 +3,9 @@ import Home from "../Pages/Home/Home";
 import About from "../Pages/About/About";
 import Main from "../Layout/Main";
 import Contact from "../Pages/Contact/Contact";
-import Appointment from "../Pages/Appointment/Appointment";
 import NotFound from "../Pages/Shared/NotFound/NotFound";
 import Services from "../Pages/Home/Services/Services";
+import MakeVisa from "../Pages/Home/MakeVisa/MakeVisa";
 
 const router = createBrowserRouter ([
     {
@@ -21,8 +21,8 @@ const router = createBrowserRouter ([
                 element: <Home></Home>
             },
             {
-                path:'/appointment',
-                element: <Appointment></Appointment>
+                path:'/visa',
+                element: <MakeVisa></MakeVisa>
             },
             {
                 path:'/about',

@@ -33,7 +33,7 @@ function Banner() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-[#32b4e7] hover:bg-blue-700 rounded-full text-white font-medium shadow-lg transition"
+            className="px-6 py-3 bg-[#32b4e7] hover:bg-[#32b4e778] rounded-full text-white font-medium shadow-lg transition"
           >
             Get Started
           </motion.button>
