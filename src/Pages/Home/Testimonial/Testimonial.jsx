@@ -9,24 +9,24 @@ const Testimonial = () => {
   const reviews = [
     {
       id: 1,
-      name: "Rizvee",
+      name: "Charles",
       img: people1,
       review: "It is a long established fact that by the readable content",
       location: "California",
     },
     {
       id: 2,
-      name: "Rafi",
+      name: "Tim BaBa Buma ",
       img: people2,
       review: "It is a long established fact that by the readable content",
-      location: "Bangladesh",
+      location: "South Africa",
     },
     {
       id: 3,
-      name: "Mazharul",
+      name: "Henrich Clasen",
       img: people3,
       review: "It is a long established fact that by the readable content",
-      location: "India",
+      location: "Uganda",
     },
   ];
 
