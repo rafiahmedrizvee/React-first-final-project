@@ -1,16 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Pages/Home/Home";
-import About from "../Pages/About/About";
-import Main from "../Layout/Main";
-import Contact from "../Pages/Contact/Contact";
-import NotFound from "../Pages/Shared/NotFound/NotFound";
-import Services from "../Pages/Home/Services/Services";
-import MakeVisa from "../Pages/Home/MakeVisa/MakeVisa";
+import Home from "../../Pages/Home/Home";
+import Visa from "../../Pages/Visa/Visa";
+import About from './../../Pages/About/About';
+import Contact from './../../Pages/Contact/Contact';
+import Services from "../../Pages/Home/Services/Services";
+import NotFound from './../../Pages/Shared/NotFound/NotFound';
+import Main from './../../Layout/Main';
+
+
+
 
 const router = createBrowserRouter ([
     {
         path:'',
-        element: <Main></Main>,
+        element: <Main/>,
         children:[
             {
                 path:'/',
@@ -22,25 +25,25 @@ const router = createBrowserRouter ([
             },
             {
                 path:'/visa',
-                element: <MakeVisa></MakeVisa>
+                element: <Visa/>
             },
             {
                 path:'/about',
-                element: <About></About>
+                element: <About/>
             },
             {
                 path:'/contact',
-                element: <Contact></Contact>
+                element: <Contact/>
             },
             {
                 path:'/service',
-                element: <Services></Services>
+                element: <Services/>
             },
         ],
     },
     {
         path:'*',
-        element:<NotFound></NotFound>
+        element:<NotFound/>
     },
    
     

@@ -1,6 +1,7 @@
 import React from 'react';
 import education from '../../../assets/images/education.jpg'
 import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
+import { Link } from 'react-router-dom';
 
 
 const Explore = () => {
@@ -23,7 +24,9 @@ const Explore = () => {
                     perferendis.
                   </p>
                   <div>
-                    <PrimaryButton>See Details F1</PrimaryButton>
+                   <Link to='/visa'>
+                   <PrimaryButton>See Details F1</PrimaryButton>
+                   </Link>
                   </div>
                 </div>
               </div>

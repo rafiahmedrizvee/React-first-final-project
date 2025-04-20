@@ -2,17 +2,19 @@ import React from "react";
 import worldkey from "../../../assets/images/men.png";
 import worldkeyimg from "../../../assets/images/visa.jpg";
 import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const WorldKey = () => {
   return (
-    <div className="my-28"
+    <div
+      className="my-28"
       style={{
         background: `url(${worldkeyimg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundBlendMode: "multiply",
-        backgroundColor:"#00000087"
+        backgroundColor: "#00000087",
       }}
     >
       <div className=" md:flex justify-center items-center mx-20 text-white">
@@ -33,7 +35,9 @@ const WorldKey = () => {
 
           <div>
             {" "}
-            <PrimaryButton>Get Appointment </PrimaryButton>
+            <Link to="/visa">
+              <PrimaryButton>Get Appointment </PrimaryButton>
+            </Link>
           </div>
         </div>
       </div>

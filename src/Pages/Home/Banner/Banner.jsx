@@ -8,6 +8,7 @@ import hero1 from '../../../assets/images/hero1.jpg';
 import hero2 from '../../../assets/images/hero2.jpg';
 import hero3 from '../../../assets/images/hero3.jpg';
 import bannerimg from '../../../assets/images/banner.png'
+import { Link } from 'react-router-dom';
 
 function Banner() {
 
@@ -31,9 +32,15 @@ function Banner() {
       Your trusted gateway for consular services, travel documents, and citizen support — anytime, anywhere.
     </p>
     <div class="flex flex-col md:flex-row justify-center gap-4">
+      <Link to='/visa' >
       <a href="#start" class="bg-white text-blue-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-100 transition">Get Started</a>
-      <a href="#contact" class="border border-white py-3 px-6 rounded-xl hover:bg-white hover:text-blue-700 transition">Contact Us</a>
+      </Link>
+     <Link to='/contact' >
+     <a href="#contact" class="border border-white py-3 px-6 rounded-xl hover:bg-white hover:text-blue-700 transition">Contact Us</a>
+     </Link>
+      <Link to='/visa'>
       <a href="#track" class="border border-white py-3 px-6 rounded-xl hover:bg-white hover:text-blue-700 transition">Track Application</a>
+      </Link>
     </div>
   </div>
 </section>
