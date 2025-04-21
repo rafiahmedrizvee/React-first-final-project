@@ -24,8 +24,5 @@
         border: 2px solid #32b4e7 !important ;
     }
 
-    :root, [data-theme] {
-      background-color: var(--root-bg, var(--color-base-100));
-      color: #32b4e7;
-  }
+   
 

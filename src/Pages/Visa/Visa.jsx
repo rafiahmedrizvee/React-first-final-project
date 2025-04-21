@@ -1,12 +1,12 @@
 import React from 'react';
 import VisaBanner from './VisaBanner/VisaBanner';
-import VisaAppointment from './VisaAppointment/VisaAppointment';
+import VisaAppointments from './VisaAppointments/VisaAppointments';
 
 const Visa = () => {
         return (
                 <div>
                         <VisaBanner></VisaBanner>
-                        <VisaAppointment></VisaAppointment>
+                        <VisaAppointments></VisaAppointments>
                 </div>
         );
 };
