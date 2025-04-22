@@ -3,7 +3,7 @@ import React from "react";
 const PrimaryButton = ({children}) => {
   return (
   
-      <button className="bg-[#32b4e7] px-6 py-3 rounded-full hover:bg-[#2a5f75] text-white font-semibold">
+      <button className="border-2 btn btn-xs  md:btn-md lg:btn-lg text-white bg-primary shadow-xl w-full hover:bg-secondary">
         {children}
       </button>
     
