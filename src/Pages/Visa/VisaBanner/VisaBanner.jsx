@@ -11,7 +11,7 @@ const VisaBanner = ({selectedDate,setselectedDate}) => {
     <div className="md:w-1/2 mb-5 shadow-2xl rounded-xl p-10">
     <DayPicker className=" "
       mode="single"
-      selectedDate={selectedDate}
+      selected={selectedDate}
       onSelect={setselectedDate}
       footer={
         selectedDate ? `selectedDate: ${selectedDate.toLocaleDateString()}` : "Pick a day."
