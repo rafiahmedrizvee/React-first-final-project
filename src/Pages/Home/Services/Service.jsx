@@ -16,7 +16,7 @@ const Service = ({ data }) => {
         <div className="card-actions justify-end">
          
 <Link to="/visa" >
-<PrimaryButton  >Get Started</PrimaryButton></Link>
+<PrimaryButton >Get Started</PrimaryButton></Link>
 
          
         </div>
