@@ -9,7 +9,7 @@ const Header = () => {
         <Link to= '/' >Home</Link>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <NavLink to= '/appointment' >Appointment</NavLink>
+        <NavLink to= '/visa' >Visa </NavLink>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
         <Link to= '/about' >About</Link>
@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar shadow-sm px-5">
+      <div className=" bg-white navbar fixed top-0 left-0 right-0 z-50 shadow-sm px-5">
         <div className="navbar-start justify-between md:justify-start w-[65%] md:w-[50%]">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
