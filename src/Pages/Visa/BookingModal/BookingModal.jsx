@@ -49,7 +49,8 @@ const BookingModal = ({time,date}) => {
     
     <div>
       <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
-      <input defaultValue={date} type="date"  id="date" name="date" placeholder="Date" required
+      <input Value={date} 
+      type="date"  id="date" name="date" placeholder="Date" required
              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"/>
     </div>
 

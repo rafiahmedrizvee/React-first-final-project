@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 const SingleVisaAppointment = ({ appointmentOption, setTime }) => {
   const { name, slots } = appointmentOption;
-  
-
 
   return (
     <div className="px-4 py-2 shadow-sm bg-primary rounded-xl text-center text-white">
