@@ -10,10 +10,13 @@ const VisaAppointments = ({selectedDate}) => {
 
 
   useEffect(() => {
-    fetch("visaAppointmentOptions.json")
+    fetch("http://localhost:7000/appointments")
       .then((res) => res.json())
       .then((data) => setAppointments(data));
   }, []);
+
+  console.log(appointments);
+  
 
   return (
     <div className="mx-5">

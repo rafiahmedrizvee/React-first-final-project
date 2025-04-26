@@ -7,6 +7,7 @@ import Testimonial from './Testimonial/Testimonial';
 import InfoCards from './InfoCards/InfoCards';
 
 
+
 const Home = () => {
     return (
         <div>
