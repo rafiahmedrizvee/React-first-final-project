@@ -1,10 +1,9 @@
 import React from "react";
-import aboutimg from "../../assets/images/people1.jpg"
 import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="bg-white text-gray-800">
+    <div className="bg-white text-gray-800  min-h-screen">
       {/* Hero Section */}
       <section className="w-full py-16 bg-primary text-white text-center px-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">

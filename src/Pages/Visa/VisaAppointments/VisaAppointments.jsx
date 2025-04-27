@@ -15,7 +15,6 @@ const VisaAppointments = ({selectedDate}) => {
       .then((data) => setAppointments(data));
   }, []);
 
-  console.log(appointments);
   
 
   return (

@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import 'animate.css';
+@plugin "daisyui";
+
+
+:root {
+        
+        --color-primary: #32b4e7;
+        --color-secondary: #63a7c2;
+        --color-accent: #6B7280;
+        --color-background: #F9FAFB;
+        --color-surface: #FFFFFF;
+        --color-muted: #6B7280;
+        --color-border: #E5E7EB;
+        --color-error: #EF4444;
+        --color-success: #10B981;
+        --color-info: #3B82F6;
+        --color-warning: #F97316;
+      }
+
+
+
+      .rdp-selected .rdp-day_button {
+        border: 2px solid #32b4e7 !important ;
+    }
+
+   
+
