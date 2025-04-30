@@ -1,6 +1,9 @@
+import { format } from "date-fns";
 import React from "react";
 
-const BookingModal = ({time,date}) => {
+const BookingModal = ({time,selectedDate}) => {
+  const {name, slots}= time;
+  const date = format(selectedDate,"PPPP");
 
   return (
     <div>
@@ -9,7 +12,7 @@ const BookingModal = ({time,date}) => {
       <div className="modal " role="dialog">
         <div className="modal-box text-black">
           <div className="flex justify-between items-start">
-            <h3 className="text-lg font-bold">{time.name}</h3>
+            <h3 className="text-lg font-bold">{name}</h3>
             <div className="">
               <label
                 htmlFor="book_modal"
@@ -56,9 +59,17 @@ const BookingModal = ({time,date}) => {
 
     
     <div>
-      <label for="time" className="block text-sm font-medium text-gray-700">Time</label>
-      <input type="time" id="time" name="time" placeholder="Time" required
-             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"/>
+      <label className=" label">Time</label>
+      <select defaultValue="Pick a Browser" 
+      className="select input w-full">
+
+        <option disabled={true}>Pick a Time</option>
+        
+{ slots?.map((slot, i )=> (<option key={i}>{slot}</option>
+
+  ))}
+      </select>
+      
     </div>
 
    

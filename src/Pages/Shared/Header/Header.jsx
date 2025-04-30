@@ -6,21 +6,23 @@ const Header = () => {
   const menuItems = (
     <React.Fragment>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] transform-3d hover:text-black">
-        <Link to= '/' >Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <NavLink to= '/visa' >Visa </NavLink>
+        <NavLink to="/visa">Visa </NavLink>
       </li>
       <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <Link to= '/about' >About</Link>
-      </li >
-      <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <Link to= '/service' >Service</Link>
-      </li >
-      <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-        <NavLink to= '/contact' >Contact</NavLink>
+        <Link to="/about">About</Link>
       </li>
-      
+      <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
+        <Link to="/service">Service</Link>
+      </li>
+      <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+      <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
+        <NavLink to="/log-in">Log In</NavLink>
+      </li>
     </React.Fragment>
   );
 
@@ -58,9 +60,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-         {menuItems}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
         <div className="navbar-end w-[35%] md:w-[50%] ">
           <a className="btn">Log in</a>
