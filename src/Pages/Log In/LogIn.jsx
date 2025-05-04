@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import google from "../../assets/images/google.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const LogIn = () => {
+  const {signIn} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleLogIn = (data) => {
+
+   
+
     console.log("handleLogIn", data);
+    signIn(data.email,data.password)
+    .then((result)=> {
+      const user = result.user;
+      console.log(user);
+      reset();
+      
+    })
+
+    .catch((error)=>{
+      console.log(error);
+      
+    });
+
+
   };
   return (
     <div className="flex justify-center items-center h-screen">

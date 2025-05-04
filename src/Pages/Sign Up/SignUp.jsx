@@ -1,17 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import google from "../../assets/images/google.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
+  const { createUser, updateUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+  const navigate = useNavigate();
 
   const handleSignUp = (data) => {
-    console.log("handleSignUp", data);
+    console.log("handleSignUp here", data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        const userInfo ={
+           displayName: data.name,
+
+        };
+        updateUser(userInfo)
+        .then(() => {
+          navigate("/")
+        })
+        .catch ((error)=>{
+          console.log(error);
+          
+        });
+       
+       
+        reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="flex justify-center items-center h-screen">
@@ -50,25 +77,27 @@ const SignUp = () => {
               )}
               <label className="label">Password</label>
               <input
-              {...register ( "password",{
-                required:"Password is required",
+                {...register("password", {
+                  required: "Password is required",
 
-                minLength:{
-                        value:6,
-                        message:"Password must be 6 character or more"
-                },
-                pattern:{
-                        value:/(?=.*?[A-Z])(?=.*?[a-z])(?=.*[!#$@%^&])(?=.*?[0-9])/,
-                         message:"password must have at Least one uppercase letter,one lowercase letter,one special character and one number"
-
-                },
-               
-               
-          })}
-              type="password" className="input" placeholder="Password" />
-              {
-        errors.password && <p className="text-red-500">{errors.password.message}</p>
-}
+                  minLength: {
+                    value: 6,
+                    message: "Password must be 6 character or more",
+                  },
+                  pattern: {
+                    value:
+                      /(?=.*?[A-Z])(?=.*?[a-z])(?=.*[!#$@%^&])(?=.*?[0-9])/,
+                    message:
+                      "password must have at Least one uppercase letter,one lowercase letter,one special character and one number",
+                  },
+                })}
+                type="password"
+                className="input"
+                placeholder="Password"
+              />
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
               <div>
                 <a className="link link-hover">
                   Already Have an Account?{" "}
