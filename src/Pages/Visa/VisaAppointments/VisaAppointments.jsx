@@ -15,7 +15,6 @@ const VisaAppointments = ({selectedDate}) => {
       .then((data) => setAppointments(data));
   }, []);
 
-  console.log(appointments);
   
 
   return (
@@ -39,8 +38,8 @@ setTime = {setTime}
 
       </div>
 {
-  time && <BookingModal time= {time} selectedDate={selectedDate} ></BookingModal>
-}
+  time && (<BookingModal time= {time} setTime = {setTime} selectedDate={selectedDate} ></BookingModal>
+)}
 
     </div>
   );
