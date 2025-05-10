@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import google from "../../assets/images/google.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const LogIn = () => {
-  const {signIn} = useContext(AuthContext);
+  const { signIn , continueWithGoogle} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -14,25 +15,32 @@ const LogIn = () => {
   } = useForm();
 
   const handleLogIn = (data) => {
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        toast.success("Login Successfully Done");
 
-   
+        reset();
+      })
 
-    console.log("handleLogIn", data);
-    signIn(data.email,data.password)
-    .then((result)=> {
-      const user = result.user;
-      console.log(user);
-      reset();
-      
-    })
-
-    .catch((error)=>{
-      console.log(error);
-      
-    });
-
-
+      .catch((error) => {});
   };
+
+
+  const googleLogin=()=>{
+    continueWithGoogle()
+    .then (result=>{
+      const user = result.user;
+      if(user){
+        toast.success("Google login Successfully Done")
+      }
+    })
+    .catch((error)=>{
+      
+      toast.error(error.message)
+    });
+  }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div>
@@ -42,7 +50,6 @@ const LogIn = () => {
         <div className="card bg-base-100 w-96 shrink-0 shadow-2xl">
           <div className="card-body">
             <form onSubmit={handleSubmit(handleLogIn)} className="fieldset">
-
               <label className="label">Email</label>
               <input
                 type="email"
@@ -69,9 +76,9 @@ const LogIn = () => {
               )}
               <div>
                 <a className="link link-hover">
-                 New to Website?{" "}
+                  New to Website?{" "}
                   <Link className="text-secondary" to="/sign-up">
-                  Create an Account
+                    Create an Account
                   </Link>{" "}
                 </a>
               </div>
@@ -82,7 +89,9 @@ const LogIn = () => {
               />
             </form>
 
-            <button className="btn btn-primary mt-4 text-white">
+            <button 
+            onClick={googleLogin}
+            className="btn btn-primary mt-4 text-white">
               <img className="w-8 h-8" src={google} alt="google" />
               Continue With Google
             </button>
