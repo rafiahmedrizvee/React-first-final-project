@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
 import toast from "react-hot-toast";
 
-const BookingModal = ({ time, setTime, selectedDate }) => {
+const BookingModal = ({ time, setTime, selectedDate,refetch }) => {
   const { name, slots } = time;
   const date = format(selectedDate, "PPPP");
 
@@ -45,6 +45,8 @@ const BookingModal = ({ time, setTime, selectedDate }) => {
       if(data.acknowledged){
         form.reset()
         toast.success('Booking Successfully Done!👏');
+        setTime("")
+        refetch()
         
       }
       else {
@@ -52,32 +54,26 @@ const BookingModal = ({ time, setTime, selectedDate }) => {
        
       }
      }
-     )
-     
-
-    
-     
-
-        
+     )    
  } 
 
   return (
-    <div>
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="book_modal" className="modal-toggle" />
-      <div className="modal " role="dialog">
-        <div className="modal-box text-black">
-          <div className="flex justify-between items-start">
-            <h3 className="text-lg font-bold">{name}</h3>
-            <div className="">
-              <label
-                htmlFor="book_modal"
-                className="btn rounded-full bg-primary text-white font-semibold  hover:btn btn-outline hover:bg-red-500 hover:rounded-full "
-              >
-                X
-              </label>
-            </div>
-          </div>
+<div>
+{/* Put this part before </body> tag */}
+<input type="checkbox" id="book_modal" className="modal-toggle" />
+<div className="modal " role="dialog">
+<div className="modal-box text-black">
+  <div className="flex justify-between items-start">
+    <h3 className="text-lg font-bold">{name}</h3>
+    <div className="">
+      <label
+        htmlFor="book_modal"
+        className="btn rounded-full bg-primary text-white font-semibold  hover:btn btn-outline hover:bg-red-500 hover:rounded-full "
+      >
+        X
+      </label>
+    </div>
+  </div>
 
           <div className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-md mt-10">
             <h2 className="text-2xl font-semibold mb-6 text-center">

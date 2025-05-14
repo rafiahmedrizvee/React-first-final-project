@@ -8,6 +8,10 @@ import NotFound from "./../../Pages/Shared/NotFound/NotFound";
 import Main from "./../../Layout/Main";
 import LogIn from "../../Pages/Log In/LogIn";
 import SignUp from "../../Pages/Sign Up/SignUp";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import PickedDate from "../../Pages/Dashboard/PickedDate/PickedDate";
+
 
 const router = createBrowserRouter([
   {
@@ -47,6 +51,21 @@ const router = createBrowserRouter([
         element: <LogIn />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout/>,
+    children:[
+      {
+        path: "/dashboard/picked-date",
+        element:<PickedDate/>,
+      },
+      {
+        path: "/dashboard/all-users",
+        element:<AllUsers/>,
+      },
+    ],
+
   },
   {
     path: "*",

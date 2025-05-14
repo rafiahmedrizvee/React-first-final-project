@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Services from "../Home/Services/Services";
+import Testimonial from "../Home/Testimonial/Testimonial";
 
 const About = () => {
   return (
     <div className="bg-white text-gray-800  min-h-screen">
+
+
+
+
+
       {/* Hero Section */}
       <section className="w-full py-16 bg-primary text-white text-center px-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -14,6 +21,8 @@ const About = () => {
           convenience.
         </p>
       </section>
+      <Services></Services>
+      
 
       {/* Mission */}
       <section className="py-12 px-6 md:px-20 bg-gray-100 text-center">
@@ -73,21 +82,9 @@ const About = () => {
         <h2 className="text-3xl font-semibold text-center mb-8">
           Meet the Team
         </h2>
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          {["Ambassador", "Digital Officer", "Support Lead"].map(
-            (role, index) => (
-              <div key={index} className="bg-white p-6 shadow-md rounded">
-                <div className="h-24 w-24 mx-auto rounded-full bg-blue-200 mb-4" />
-                
-                <h4 className="text-xl font-bold">{role}</h4>
-                <p className="text-gray-600">
-                  Expert in embassy tech and services
-                </p>
-              </div>
-            )
-          )}
-        </div>
+        <Testimonial></Testimonial>
       </section>
+       
 
       {/* Timeline */}
       <section className="py-12 px-6 md:px-20">
