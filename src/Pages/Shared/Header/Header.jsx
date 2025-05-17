@@ -12,7 +12,7 @@ const menuItems = (
       <Link to="/">Home </Link>
     </li>
     <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-      <NavLink to="/visa">Visa </NavLink>
+      <Link to="/visa">Visa </Link>
     </li>
     <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
       <Link to="/about">About</Link>
@@ -21,8 +21,9 @@ const menuItems = (
       <Link to="/service">Service</Link>
     </li>
     <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
-      <NavLink to="/contact">Contact</NavLink>
+      <Link to="/contact">Contact</Link>
     </li>
+  
    
   </React.Fragment>
 );
@@ -86,6 +87,9 @@ return (
           </a>
         </li>
         <li><a>{user?.email} </a></li>
+          <li className="md:text-xl text-center items-center font-semibold text-[#32b4e7] hover:bg-[#32b4e778] hover:text-black">
+      <NavLink to="/dashboard">Dashboard</NavLink>
+    </li>
         <li>
           <a onClick={logOut}>Logout</a>
           </li>

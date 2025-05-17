@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import google from "../../assets/images/google.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -14,6 +14,8 @@ const LogIn = () => {
     reset,
   } = useForm();
 
+    const navigate = useNavigate();
+
   const handleLogIn = (data) => {
     signIn(data.email, data.password)
       .then((result) => {
@@ -21,6 +23,7 @@ const LogIn = () => {
         toast.success("Login Successfully Done");
 
         reset();
+         navigate("/");
       })
 
       .catch((error) => {});

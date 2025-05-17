@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("User Tracking login or not");
+      // console.log("User Tracking login or not");
       setUser(currentUser)
     })
     return ( ) =>{

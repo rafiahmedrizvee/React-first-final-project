@@ -28,7 +28,7 @@ const BookingModal = ({ time, setTime, selectedDate,refetch }) => {
       email,phone,
      }
 
-    //  console.log(booking);
+   
 
      fetch ("http://localhost:7000/bookings",{
       method:"POST",
