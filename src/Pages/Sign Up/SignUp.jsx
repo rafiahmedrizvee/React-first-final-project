@@ -10,7 +10,9 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
 
-  
+  const { continueWithGoogle} = useContext(AuthContext);
+
+   
   
   const { createUser, updateUser } = useContext(AuthContext);
   const {
@@ -56,7 +58,6 @@ const SignUp = () => {
 
         savedUsers(data.name,data.email)
 
-
         updateUser(userInfo)
           .then(() => {
             navigate("/");
@@ -72,7 +73,28 @@ const SignUp = () => {
         if(error.message === "Firebase: Error (auth/email-already-in-use).")
         toast.error("Email Already in Used")
       });
+
+      
   };
+
+  const googleSignIn=()=>{
+    continueWithGoogle()
+    .then (result=>{
+      const user = result.user;
+      if(user){
+        toast.success("Google login Successfully Done")
+      }
+      navigate("/");
+    })
+    .catch((error)=>{
+      
+      toast.error(error.message)
+    });
+  }
+
+
+  
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div>
@@ -146,7 +168,7 @@ const SignUp = () => {
               />
             </form>
             
-            <button  className="btn btn-primary mt-4 text-white">
+            <button onClick={googleSignIn}  className="btn btn-primary mt-4 text-white">
               <img className="w-8 h-8" src={google} alt="google" />
               Continue With Google
             </button>

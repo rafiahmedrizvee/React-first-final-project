@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../Shared/Loading/Loading";
 
 const PickedDate = () => {
 
@@ -13,6 +14,10 @@ const PickedDate = () => {
         const data = await res.json()
         return data
 } })
+
+if (isLoading){
+  return <Loading/>
+}
         
 
   return (

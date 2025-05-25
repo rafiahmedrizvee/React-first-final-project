@@ -10,6 +10,7 @@ function App() {
       <div className="max-w-[1440px] mx-auto mt-16">
         <RouterProvider router={router}></RouterProvider>
         <Toaster position="top-right" reverseOrder={false} />
+      
       </div>
     </>
   );

@@ -18,6 +18,11 @@
         --color-warning: #F97316;
       }
 
+      .active{
+        background-color:#6B7280 ;
+        color: #FFFFFF;
+      }
+
 
 
       .rdp-selected .rdp-day_button {

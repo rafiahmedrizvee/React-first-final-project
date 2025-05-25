@@ -34,7 +34,7 @@ const VisaAppointments = ({ selectedDate }) => {
       <div className="text-center">
         <h4 className="text-primary font-semibold">Visa Appointments </h4>
         <h3 className="text-3xl font-semibold ">
-          Visa Appointment On :{date}{" "}
+          Visa Appointment On :{date}
         </h3>
       </div>
 

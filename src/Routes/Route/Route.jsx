@@ -11,7 +11,8 @@ import SignUp from "../../Pages/Sign Up/SignUp";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import PickedDate from "../../Pages/Dashboard/PickedDate/PickedDate";
-
+import ManageService from "../../Pages/Dashboard/ManageService/ManageService";
+import AddService from "../../Pages/Dashboard/AddService/AddService";
 
 const router = createBrowserRouter([
   {
@@ -54,18 +55,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout/>,
-    children:[
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <PickedDate />,
+      },
       {
         path: "/dashboard/picked-date",
-        element:<PickedDate/>,
+        element: <PickedDate />,
       },
       {
         path: "/dashboard/all-users",
-        element:<AllUsers/>,
+        element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/manage-service",
+        element: <ManageService />,
+      },
+      {
+        path: "/dashboard/add-service",
+        element: <AddService />,
       },
     ],
-
   },
   {
     path: "*",

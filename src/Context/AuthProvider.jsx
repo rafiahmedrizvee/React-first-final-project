@@ -11,16 +11,13 @@ import {
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
 
-
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-
-
-  const [user,setUser] = useState({})
+  const [user, setUser] = useState({});
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -35,19 +32,18 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const continueWithGoogle = () =>{
-    return signInWithPopup (auth, googleProvider)
-  }
-
+  const continueWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       // console.log("User Tracking login or not");
-      setUser(currentUser)
-    })
-    return ( ) =>{
+      setUser(currentUser);
+    });
+    return () => {
       unSubscribe();
-    }
+    };
   });
 
   const authInfo = {
@@ -57,7 +53,6 @@ const AuthProvider = ({ children }) => {
     logOut,
     continueWithGoogle,
     user,
-  
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -29,7 +29,6 @@ const LogIn = () => {
       .catch((error) => {});
   };
 
-
   const googleLogin=()=>{
     continueWithGoogle()
     .then (result=>{
@@ -37,11 +36,13 @@ const LogIn = () => {
       if(user){
         toast.success("Google login Successfully Done")
       }
+        navigate("/");
     })
     .catch((error)=>{
       
       toast.error(error.message)
     });
+   
   }
 
   return (

@@ -1,75 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import toast from "react-hot-toast";
 import Loading from "../../Shared/Loading/Loading";
 
-const AllUsers = () => {
+const ManageService = () => {
   const {
-    data: users = [],
+    data: services = [],
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["all-service"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:7000/users");
+      const res = await fetch("http://localhost:7000/all-service");
       const data = await res.json();
       return data;
     },
   });
-
-  const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:7000/users/admin/${id}`, {
-      method: "PUT",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          toast.success("Make Admin Successfully");
-          refetch()
-        }
-      });
-  };
-
-  if (isLoading) {
-    return <Loading/>
+  if (isLoading){
+        return <Loading/>
   }
 
   return (
     <div>
-      <h1 className="text-3xl mb-5">All users  </h1>
+      <h1 className="text-3xl mb-5">Manage Services </h1>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table className="table w-full">
           {/* head */}
           <thead>
             <tr className="bg-primary text-white font-bold">
               <th>Serial</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Admin</th>
+              <th>Image</th>
+              <th>Service Name</th>  
+              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {users?.map((user, i) => (
+            {services?.map((service, i) => (
               <tr key={i} className="hover:bg-base-300 text-black">
                 <th>{i + 1} </th>
-                <td>{user.name} </td>
-                <td>{user.email}</td>
-
-                <td>
-                  {user.role ? (
-                    <p>Admin</p>
-                  ) : (
-                    <button
-                      onClick={() => handleMakeAdmin(user._id)}
-                      className="btn btn-sm btn-success btn-outline "
-                    >
-                      Make Admin
-                    </button>
-                  )}
+                 <td>
+                  <img className="w-30 h-22 rounded-full p-1 border-1 border-primary " src={`data:image/*;base64,${service.img}`} alt="image"/>
                 </td>
 
-                <td>
+                <td>{service.name} </td>
+                <td className="text-justify">{service.des}</td>
+
+               
+
+                <td className="">
+                        <button className="btn btn-sm btn-success btn-outline mb-4">
+                        Update
+                  </button>
                   <a
                     className="group relative inline-block text-sm font-medium text-white focus:ring-3 focus:outline-hidden"
                     href="#"
@@ -89,4 +70,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default ManageService;
