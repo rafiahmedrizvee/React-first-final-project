@@ -10,13 +10,15 @@ const ManageService = () => {
   } = useQuery({
     queryKey: ["all-service"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:7000/all-service");
+      const res = await fetch(
+        "https://visa-embassy-server.vercel.app/all-service"
+      );
       const data = await res.json();
       return data;
     },
   });
-  if (isLoading){
-        return <Loading/>
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -29,7 +31,7 @@ const ManageService = () => {
             <tr className="bg-primary text-white font-bold">
               <th>Serial</th>
               <th>Image</th>
-              <th>Service Name</th>  
+              <th>Service Name</th>
               <th>Description</th>
               <th>Action</th>
             </tr>
@@ -38,18 +40,20 @@ const ManageService = () => {
             {services?.map((service, i) => (
               <tr key={i} className="hover:bg-base-300 text-black">
                 <th>{i + 1} </th>
-                 <td>
-                  <img className="w-30 h-22 rounded-full p-1 border-1 border-primary " src={`data:image/*;base64,${service.img}`} alt="image"/>
+                <td>
+                  <img
+                    className="w-30 h-22 rounded-full p-1 border-1 border-primary "
+                    src={`data:image/*;base64,${service.img}`}
+                    alt="image"
+                  />
                 </td>
 
                 <td>{service.name} </td>
                 <td className="text-justify">{service.des}</td>
 
-               
-
                 <td className="">
-                        <button className="btn btn-sm btn-success btn-outline mb-4">
-                        Update
+                  <button className="btn btn-sm btn-success btn-outline mb-4">
+                    Update
                   </button>
                   <a
                     className="group relative inline-block text-sm font-medium text-white focus:ring-3 focus:outline-hidden"

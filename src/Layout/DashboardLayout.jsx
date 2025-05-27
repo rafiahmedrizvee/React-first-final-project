@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../Pages/Shared/Header/Header";
 import { NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
       <Header></Header>
@@ -30,41 +34,42 @@ const DashboardLayout = () => {
             {/* Sidebar content here */}
 
             <li className=" hover:bg-primary rounded-lg hover:text-white font-semibold border-1">
-              
-                <NavLink
-                  to="/dashboard/picked-date"
-                  className="font-semibold text-xl "
-                >
-                  <p className="  ">
-                  My Picked Date </p>
-                </NavLink>
-              
-            </li>
-            <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
               <NavLink
-                to="/dashboard/all-users"
-                className="font-semibold text-xl  "
+                to="/dashboard/picked-date"
+                className="font-semibold text-xl "
               >
-                <p className=" ">All Users</p>
+                <p className="  ">My Picked Date </p>
               </NavLink>
             </li>
-            <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
-              <NavLink
-                to="/dashboard/manage-service"
-                className="font-semibold text-xl  "
-              >
-                <p className=" ">Manage Services</p>
-              </NavLink>
-            </li>
-            <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
-              <NavLink
-                to="/dashboard/add-service"
-                className="font-semibold text-xl  "
-              >
-                <p className=" ">Add Services</p>
-              </NavLink>
-            </li>
-            
+            {
+            isAdmin && (
+              <>
+                <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
+                  <NavLink
+                    to="/dashboard/all-users"
+                    className="font-semibold text-xl  "
+                  >
+                    <p className=" ">All Users</p>
+                  </NavLink>
+                </li>
+                <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
+                  <NavLink
+                    to="/dashboard/manage-service"
+                    className="font-semibold text-xl  "
+                  >
+                    <p className=" ">Manage Services</p>
+                  </NavLink>
+                </li>
+                <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
+                  <NavLink
+                    to="/dashboard/add-service"
+                    className="font-semibold text-xl  "
+                  >
+                    <p className=" ">Add Services</p>
+                  </NavLink>
+                </li>
+              </>
+            )}
             {/* <li className="hover:bg-primary rounded-lg hover:text-white font-semibold border-1  ">
               <NavLink
                 to="/dashboard/add-date"

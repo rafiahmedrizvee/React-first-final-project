@@ -18,7 +18,7 @@ const VisaAppointments = ({ selectedDate }) => {
     queryKey: ["appointments", date],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:7000/appointments?date=${date}`
+        `https://visa-embassy-server.vercel.app/appointments?date=${date}`
       );
       const data = await res.json();
       return data;
@@ -33,9 +33,7 @@ const VisaAppointments = ({ selectedDate }) => {
     <div className="mx-5">
       <div className="text-center">
         <h4 className="text-primary font-semibold">Visa Appointments </h4>
-        <h3 className="text-3xl font-semibold ">
-          Visa Appointment On :{date}
-        </h3>
+        <h3 className="text-3xl font-semibold ">Visa Appointment On :{date}</h3>
       </div>
 
       <div className="grid md:grid-cols-3 gap-5 md:my-10 my-5">

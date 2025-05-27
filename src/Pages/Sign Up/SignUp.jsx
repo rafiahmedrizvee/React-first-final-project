@@ -5,15 +5,9 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import toast from "react-hot-toast";
 
-
-
-
 const SignUp = () => {
+  const { continueWithGoogle } = useContext(AuthContext);
 
-  const { continueWithGoogle} = useContext(AuthContext);
-
-   
-  
   const { createUser, updateUser } = useContext(AuthContext);
   const {
     register,
@@ -23,40 +17,34 @@ const SignUp = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const savedUsers = (name,email) =>{
+  const savedUsers = (name, email) => {
+    const user = { name, email };
 
-    const user = {name,email}
-
-    
-
-    fetch("http://localhost:7000/users",{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
-
+    fetch("https://visa-embassy-server.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.acknowledged){
-       
-        toast.success("Signup Successfully Done")
-      }
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Signup Successfully Done");
+        }
+      });
+  };
 
   const handleSignUp = (data) => {
-    
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        
+
         const userInfo = {
           displayName: data.name,
         };
 
-        savedUsers(data.name,data.email)
+        savedUsers(data.name, data.email);
 
         updateUser(userInfo)
           .then(() => {
@@ -64,36 +52,27 @@ const SignUp = () => {
           })
           .catch((err) => {
             console.log(err);
-            
           });
-
       })
       .catch((error) => {
-          
-        if(error.message === "Firebase: Error (auth/email-already-in-use).")
-        toast.error("Email Already in Used")
+        if (error.message === "Firebase: Error (auth/email-already-in-use).")
+          toast.error("Email Already in Used");
       });
-
-      
   };
 
-  const googleSignIn=()=>{
+  const googleSignIn = () => {
     continueWithGoogle()
-    .then (result=>{
-      const user = result.user;
-      if(user){
-        toast.success("Google login Successfully Done")
-      }
-      navigate("/");
-    })
-    .catch((error)=>{
-      
-      toast.error(error.message)
-    });
-  }
-
-
-  
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          toast.success("Google login Successfully Done");
+        }
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -167,8 +146,11 @@ const SignUp = () => {
                 className="btn btn-primary mt-4 text-white"
               />
             </form>
-            
-            <button onClick={googleSignIn}  className="btn btn-primary mt-4 text-white">
+
+            <button
+              onClick={googleSignIn}
+              className="btn btn-primary mt-4 text-white"
+            >
               <img className="w-8 h-8" src={google} alt="google" />
               Continue With Google
             </button>

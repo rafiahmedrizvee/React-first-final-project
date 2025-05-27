@@ -7,23 +7,24 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 
 const Services = () => {
+  const {
+    data: services = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["all-service"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://visa-embassy-server.vercel.app/all-service"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  if (isLoading) {
+    return <Loading />;
+  }
 
-   const {
-      data: services = [],
-      refetch,
-      isLoading,
-    } = useQuery({
-      queryKey: ["all-service"],
-      queryFn: async () => {
-        const res = await fetch("http://localhost:7000/all-service");
-        const data = await res.json();
-        return data;
-      },
-    });
-    if (isLoading){
-          return <Loading/>
-    }
-    
   // const servicesData = [
   //   {
   //     _id: 1,
@@ -49,12 +50,14 @@ const Services = () => {
     <div className="my-10 md:my-20 mx-3 md:mx-5">
       <div className="text-center my-10">
         <h2 className="text-2xl text-primary font-semibold ">Our Service</h2>
-        <h3 className="text-3xl text-secondary font-semibold ">Service We Provide</h3>
+        <h3 className="text-3xl text-secondary font-semibold ">
+          Service We Provide
+        </h3>
       </div>
       <div className="grid md:grid-cols-3 gap-5">
-        {
-                services.map((service)=>( <Service key={service._id} data= {service}></Service> ))
-        }
+        {services.map((service) => (
+          <Service key={service._id} data={service}></Service>
+        ))}
       </div>
     </div>
   );

@@ -13,6 +13,8 @@ import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import PickedDate from "../../Pages/Dashboard/PickedDate/PickedDate";
 import ManageService from "../../Pages/Dashboard/ManageService/ManageService";
 import AddService from "../../Pages/Dashboard/AddService/AddService";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +57,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute><DashboardLayout/></PrivateRoute> ,
     children: [
       {
         path: "/dashboard",
@@ -63,19 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/picked-date",
-        element: <PickedDate />,
+        element: <PickedDate></PickedDate>,
       },
       {
         path: "/dashboard/all-users",
-        element: <AllUsers />,
+        element: <AdminRoute><AllUsers/></AdminRoute>,
       },
       {
         path: "/dashboard/manage-service",
-        element: <ManageService />,
+        element: <AdminRoute><ManageService /></AdminRoute>,
       },
       {
         path: "/dashboard/add-service",
-        element: <AddService />,
+        element: <AdminRoute><AddService /></AdminRoute>,
       },
     ],
   },

@@ -11,32 +11,32 @@ const AllUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:7000/users");
+      const res = await fetch("https://visa-embassy-server.vercel.app/users");
       const data = await res.json();
       return data;
     },
   });
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:7000/users/admin/${id}`, {
+    fetch(`https://visa-embassy-server.vercel.app/users/admin/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success("Make Admin Successfully");
-          refetch()
+          refetch();
         }
       });
   };
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
     <div>
-      <h1 className="text-3xl mb-5">All users  </h1>
+      <h1 className="text-3xl mb-5">All users </h1>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table className="table w-full">
           {/* head */}
