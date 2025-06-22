@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import google from "../../assets/images/google.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import toast from "react-hot-toast";
 
 const LogIn = () => {
+
   const { signIn , continueWithGoogle} = useContext(AuthContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const {register,handleSubmit,
+formState: { errors },reset,} = useForm();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/"
 
   const handleLogIn = (data) => {
     signIn(data.email, data.password)
@@ -21,11 +23,11 @@ const LogIn = () => {
         toast.success("Login Successfully Done");
 
         reset();
+         navigate(from,{replace:true});
       })
 
       .catch((error) => {});
   };
-
 
   const googleLogin=()=>{
     continueWithGoogle()
@@ -34,11 +36,13 @@ const LogIn = () => {
       if(user){
         toast.success("Google login Successfully Done")
       }
+        navigate("/");
     })
     .catch((error)=>{
       
       toast.error(error.message)
     });
+   
   }
 
   return (

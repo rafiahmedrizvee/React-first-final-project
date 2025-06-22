@@ -7,9 +7,10 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
-      <div className="max-w-[1440px] mx-auto mt-20">
+      <div className="max-w-[1440px] mx-auto mt-16">
         <RouterProvider router={router}></RouterProvider>
         <Toaster position="top-right" reverseOrder={false} />
+      
       </div>
     </>
   );

@@ -19,21 +19,23 @@ function Banner() {
       src={bannerimg}
       className="max-w-sm rounded-lg shadow-2xl md:w-1/2 h-[500px] object-cover w-full"
     />
-    <section class="  py-16 px-6 md:px-12 text-center  w-full">
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 animate__animated animate__slideInDown">Welcome to the Official Online Embassy Portal</h1>
-    <p class="text-lg md:text-xl mb-8 animate__animated animate__zoomInDown">
+    <section className="  py-16 px-6 md:px-12 text-center  w-full">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl md:text-5xl font-bold mb-4 animate__animated animate__slideInDown">Welcome to the Official Online Embassy Portal</h1>
+    <p className="text-lg md:text-xl mb-8 animate__animated animate__zoomInDown">
       Your trusted gateway for consular services, travel documents, and citizen support — anytime, anywhere.
     </p>
-    <div class="flex flex-col md:flex-row justify-center gap-4">
+    <div className="flex flex-col md:flex-row justify-center gap-4">
       <Link to='/visa' >
-      <a href="#start" class="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">Get Started</a>
+      <button className="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">Get Started</button>
       </Link>
      <Link to='/contact' >
-     <a href="#contact" class="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">Contact Us</a>
+     <button className="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">
+Contact Us
+      </button > 
      </Link>
       <Link to='/visa'>
-      <a href="#track" class="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">Track Application</a>
+      <button className="bg-white text-primary hover:text-white font-semibold py-3 px-6 rounded-xl hover:bg-primary transition">Track Application</button>
       </Link>
     </div>
   </div>

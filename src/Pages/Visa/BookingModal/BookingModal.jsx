@@ -3,63 +3,48 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
 import toast from "react-hot-toast";
 
-const BookingModal = ({ time, setTime, selectedDate }) => {
+const BookingModal = ({ time, setTime, selectedDate, refetch }) => {
   const { name, slots } = time;
   const date = format(selectedDate, "PPPP");
 
   const { user } = useContext(AuthContext);
-  
 
- const handleAppointment =(event) =>{
+  const handleAppointment = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const userName = form.name.value;
+    const slot = form.slot.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
 
-        event.preventDefault();
-     const form = event.target;
-     const userName = form.name.value;
-     const slot = form.slot.value;
-     const email = form.email.value;
-     const phone = form.phone.value;
-
-     const booking = {
-      
-      serviceName:name,
+    const booking = {
+      serviceName: name,
       appointmentDate: date,
       slot,
-      name:userName,
-      email,phone,
-     }
+      name: userName,
+      email,
+      phone,
+    };
 
-    //  console.log(booking);
-
-     fetch ("http://localhost:7000/bookings",{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
-
+    fetch("https://visa-embassy-server.vercel.app/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(booking)
-     })
-     .then(res => res.json())
-     .then(data=>{
-      
-
-      if(data.acknowledged){
-        form.reset()
-        toast.success('Booking Successfully Done!👏');
-        
-      }
-      else {
-        toast.error(data.message );
-       
-      }
-     }
-     )
-     
-
-    
-     
-
-        
- } 
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          form.reset();
+          toast.success("Booking Successfully Done!👏");
+          setTime("");
+          refetch();
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
 
   return (
     <div>
@@ -83,9 +68,8 @@ const BookingModal = ({ time, setTime, selectedDate }) => {
             <h2 className="text-2xl font-semibold mb-6 text-center">
               Appointment Form
             </h2>
-            <form onSubmit={handleAppointment}  className="space-y-4">
-
-            <div>
+            <form onSubmit={handleAppointment} className="space-y-4">
+              <div>
                 <label
                   for="date"
                   className="block text-sm font-medium text-gray-700"
@@ -150,8 +134,6 @@ const BookingModal = ({ time, setTime, selectedDate }) => {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
-
-            
 
               <div>
                 <label className=" label">Time</label>
